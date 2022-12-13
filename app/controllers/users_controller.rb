@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def new; end
+  def new
+    @user = User.new
+  end
 
   def create
+    # binding.pry
     @user = User.new(user_params)
     if @user.save
       redirect_to "/users/#{@user.id}"
     else
-      redirect_to '/register'
+      redirect_to '/users/new'
       flash[:alert] = "Error: #{error_message(@user.errors)}"
     end
   end
@@ -26,6 +29,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :email)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
