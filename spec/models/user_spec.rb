@@ -12,15 +12,18 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:email) }
     it { should validate_uniqueness_of(:email) }
-    it { should validate_presence_of(:password)}
-    it { should have_secure_password}
+    it { should validate_presence_of(:password) }
+    it { should have_secure_password }
   end
 
   describe 'methods' do
     before :each do
-      @mostafa = User.create!(name: 'Mostafa', email: 'sasa2020@hotmail.com', password: "test", password_confirmation: "test")
-      @yuji = User.create!(name: 'Yuji', email: 'yuyuhakusho2020@hotmail.com', password: "test", password_confirmation: "test")
-      @bryan = User.create!(name: 'Bryan', email: 'breakingbad2020@hotmail.com', password: "test", password_confirmation: "test")
+      @mostafa = User.create!(name: 'Mostafa', email: 'sasa2020@hotmail.com', password: 'test',
+                              password_confirmation: 'test')
+      @yuji = User.create!(name: 'Yuji', email: 'yuyuhakusho2020@hotmail.com', password: 'test',
+                           password_confirmation: 'test')
+      @bryan = User.create!(name: 'Bryan', email: 'breakingbad2020@hotmail.com', password: 'test',
+                            password_confirmation: 'test')
 
       @party_1 = @mostafa.parties.create!(movie_title: 'The Godfather', duration: 175, date: '12/1/2022',
                                           time: '19:00', host_id: @mostafa.id)

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :users, only: [:new,:create]
-  
+  resources :users, only: %i[new create]
+  get '/login', to: 'users#login_form'
+  post '/login', to: 'users#login_user'
   get '/users/:id', to: 'users#show'
   get '/users/:id/movies', to: 'movies#index'
   get '/', to: 'pages#home'

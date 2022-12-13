@@ -9,8 +9,8 @@ RSpec.describe 'Creating a new user' do
 
       fill_in('Name:', with: 'Yuji')
       fill_in('Email:', with: 'yuji@yuji.com')
-      fill_in("Password:", with: 'test')
-      fill_in("Confirm Password:", with: 'test')
+      fill_in('Password:', with: 'test')
+      fill_in('Confirm Password:', with: 'test')
 
       click_button('Register')
       new_user = User.last
@@ -18,16 +18,16 @@ RSpec.describe 'Creating a new user' do
     end
 
     it 'returns an error message if email is already taken' do
-      @yuji = User.create!(name: 'Yuji', email: 'yuji@yuji.com', password: "test", password_confirmation: "test")
+      yuji = User.create!(name: 'Yuji', email: 'yuji@yuji.com', password: 'test', password_confirmation: 'test')
       visit '/users/new'
 
       fill_in('Name:', with: 'Yuji')
       fill_in('Email:', with: 'yuji@yuji.com')
-      fill_in("Password:", with: 'test')
-      fill_in("Confirm Password:", with: 'test')
+      fill_in('Password:', with: 'test')
+      fill_in('Confirm Password:', with: 'test')
 
       click_button('Register')
-      
+
       expect(page).to have_content('Email has already been taken')
     end
 
@@ -36,8 +36,8 @@ RSpec.describe 'Creating a new user' do
 
       fill_in('Name', with: '')
       fill_in('Email:', with: 'yuji@yuji.com')
-      fill_in("Password:", with: 'test')
-      fill_in("Confirm Password:", with: 'test')
+      fill_in('Password:', with: 'test')
+      fill_in('Confirm Password:', with: 'test')
 
       click_button('Register')
 
@@ -49,8 +49,8 @@ RSpec.describe 'Creating a new user' do
 
       fill_in('Name:', with: 'Yuji')
       fill_in('Email:', with: 'yuji@yuji.com')
-      fill_in("Password:", with: '')
-      fill_in("Confirm Password:", with: 'test')
+      fill_in('Password:', with: '')
+      fill_in('Confirm Password:', with: 'test')
 
       click_button('Register')
 
@@ -62,8 +62,8 @@ RSpec.describe 'Creating a new user' do
 
       fill_in('Name:', with: 'Yuji')
       fill_in('Email:', with: 'yuji@yuji.com')
-      fill_in("Password:", with: 'test')
-      fill_in("Confirm Password:", with: '')
+      fill_in('Password:', with: 'test')
+      fill_in('Confirm Password:', with: '')
 
       click_button('Register')
 

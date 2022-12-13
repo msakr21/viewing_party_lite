@@ -4,9 +4,11 @@ require 'rails_helper'
 
 RSpec.describe 'User discover page' do
   before :each do
-    @mostafa = User.create!(name: 'Mostafa', email: 'sasa2020@hotmail.com')
-    @jim = User.create!(name: 'Jimothy', email: 'jimmyboy@hotmail.com')
-    @bryan = User.create!(name: 'Bryan', email: 'breakingbad2020@hotmail.com')
+    @mostafa = User.create!(name: 'Mostafa', email: 'sasa2020@hotmail.com', password: 'test',
+                            password_confirmation: 'test')
+    @jim = User.create!(name: 'Jimothy', email: 'jimmyboy@hotmail.com', password: 'test', password_confirmation: 'test')
+    @bryan = User.create!(name: 'Bryan', email: 'breakingbad2020@hotmail.com', password: 'test',
+                          password_confirmation: 'test')
   end
 
   describe 'As a visitor' do
